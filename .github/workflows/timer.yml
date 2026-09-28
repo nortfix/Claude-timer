@@ -14,9 +14,11 @@ jobs:
 
     steps:
       - name: Wait
+        env:
+          MINUTES: ${{ github.event.inputs.minutes }}
         run: |
-          echo "Waiting ${{ github.event.inputs.minutes }} minutes..."
-          sleep $(( ${{ github.event.inputs.minutes }} * 60 ))
+          echo "Waiting ${MINUTES} minutes..."
+          sleep $(( MINUTES * 60 ))
 
       - name: Continue
         run: |
