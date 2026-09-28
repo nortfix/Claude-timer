@@ -16,7 +16,7 @@ jobs:
       - name: Wait
         run: |
           echo "Waiting ${{ github.event.inputs.minutes }} minutes..."
-          sleep $(({{ github.event.inputs.minutes }} * 60))
+          sleep $(( ${{ github.event.inputs.minutes }} * 60 ))
 
       - name: Continue
         run: |
