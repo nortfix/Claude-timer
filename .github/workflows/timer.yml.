@@ -1,0 +1,23 @@
+name: Claude Timer
+
+on:
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: "How many minutes to wait"
+        required: true
+        default: "5"
+
+jobs:
+  timer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wait
+        run: |
+          echo "Waiting ${{ github.event.inputs.minutes }} minutes..."
+          sleep $(({{ github.event.inputs.minutes }} * 60))
+
+      - name: Continue
+        run: |
+          echo "TIMER FINISHED - continue"
